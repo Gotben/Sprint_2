@@ -24,14 +24,12 @@ public class ShoppingCart {
         double totalPrice = 0;
         for (int i = 0; i < items.length; i++) {
             double price = items[i].getAmount() * items[i].getPrice();
-            double discount = 0;
-            if(items[i] instanceof Discountable) {
-                discount = ((Discountable) items[i]).getDiscount();
-            }
+            double discount = ((Discountable) items[i]).getDiscount();
             totalPrice += price * (1 - discount / 100);
         }
         return totalPrice;
     }
+
 
     //получить общую сумму всех вегетарианских продуктов в корзине без скидки
     public double getTotalPriceWithoutDiscount() {
